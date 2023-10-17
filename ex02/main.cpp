@@ -1,18 +1,46 @@
-#include "AForm.hpp"
-#include "Concret.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main()
 {
     try
     {
-        Bureaucrat b( "Hamza", 1 );
-        AForm* a = new Concrete() ;
-        AForm* b = new Concrete() ;
+        Bureaucrat b( "Hamza", 137 );
 
-        *b = *a;
-        //std::cout  << *a << std::endl << std::endl;
+        ShrubberyCreationForm sc( "Hamza" );
 
-        delete a;
+        ShrubberyCreationForm scc( "Youssef" );
+
+        sc.beSigned( b );
+
+        scc = sc;
+
+        std::cout << sc << std::endl;
+
+        std::cout << std::endl;
+
+        std::cout << scc << std::endl;
+
+        std::cout << std::endl;
+
+        AForm* br = new ShrubberyCreationForm( "Hamza" );
+
+        AForm* brr = new ShrubberyCreationForm( "Youssef" );
+        
+        br->beSigned( b );
+
+        *brr = *br;
+
+        std::cout << *br << std::endl;
+
+        std::cout << std::endl;
+
+        std::cout << *brr << std::endl;
+
+        br->execute( b );
+
+        delete br;
+        delete brr;
+
     }
     catch( const std::exception& e )
     {

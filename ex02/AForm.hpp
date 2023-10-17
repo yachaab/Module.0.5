@@ -27,7 +27,8 @@ public:
     const int&          getGrtsf()  const;
     const int&          getGrtef()  const;
 
-    virtual void beSigned( const Bureaucrat& ) = 0;
+    void beSigned( const Bureaucrat& );
+    virtual void execute(Bureaucrat const & ) const = 0;
 };
 
 std::ostream& operator<<( std::ostream& out, const AForm& form );

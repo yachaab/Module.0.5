@@ -6,7 +6,7 @@ OBJDIR  = obj
 
 CPPFLAG = -Werror -Wall -Wextra -std=c++98 -g3 -fsanitize=address
 
-SRC     = main.cpp Bureaucrat.cpp AForm.cpp
+SRC     = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
 
 OBJ     = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 
