@@ -41,6 +41,6 @@ int main0()
 int main()
 {
     main0();
-    system( "leaks a.out" );
+    //system( "leaks a.out" );
     return ( 0 );
 }

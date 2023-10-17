@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <ctime>
 #include "RobotomyRequestForm.hpp"
-
 class RobotomyRequestForm::ExecuteFormFailException : public std::exception
 {
 private:
@@ -43,7 +42,7 @@ void RobotomyRequestForm::execute( Bureaucrat const & bureaucrat ) const
 
         if ( (int) rand() % 2 )
         {
-            #if __APPLE__
+			#if __APPLE__
             system("afplay  ~/Desktop/sound.wav");
 			#elif __linux__
 			system("ffplay ~/Desktop/sound.wav");
