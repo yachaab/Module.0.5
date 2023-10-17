@@ -1,45 +1,25 @@
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
-int main()
+int main0()
 {
+    AForm* csf = new ShrubberyCreationForm( "Shrubbery" );
+    AForm* rrf = new RobotomyRequestForm( "Roboto" );
+    AForm* ppf = new PresidentialPardonForm( "Pardon" );
+
     try
     {
         Bureaucrat b( "Hamza", 137 );
 
-        ShrubberyCreationForm sc( "Hamza" );
+        csf->beSigned( b );
+        b.executeForm( *csf );
 
-        ShrubberyCreationForm scc( "Youssef" );
+        // rrf->beSigned( b );
+        // b.executeForm( *rrf );
 
-        sc.beSigned( b );
-
-        scc = sc;
-
-        std::cout << sc << std::endl;
-
-        std::cout << std::endl;
-
-        std::cout << scc << std::endl;
-
-        std::cout << std::endl;
-
-        AForm* br = new ShrubberyCreationForm( "Hamza" );
-
-        AForm* brr = new ShrubberyCreationForm( "Youssef" );
-        
-        br->beSigned( b );
-
-        *brr = *br;
-
-        std::cout << *br << std::endl;
-
-        std::cout << std::endl;
-
-        std::cout << *brr << std::endl;
-
-        br->execute( b );
-
-        delete br;
-        delete brr;
+        // ppf->beSigned( b );
+        // b.executeForm( *ppf );
 
     }
     catch( const std::exception& e )
@@ -50,5 +30,17 @@ int main()
     {
         std::cerr << FRED( "unexpected error\n" );
     }
+
+    delete csf;
+    delete rrf;
+    delete ppf;
+
     return (0);
+}
+
+int main()
+{
+    main0();
+    system( "leaks a.out" );
+    return ( 0 );
 }

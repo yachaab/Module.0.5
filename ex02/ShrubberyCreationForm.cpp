@@ -1,12 +1,12 @@
 #include "ShrubberyCreationForm.hpp"
 
-class ShrubberyCreationForm::GradeTooLowToExecuteFormException : public std::exception
+class ShrubberyCreationForm::ExecuteFormFailException : public std::exception
 {
 private:
     const char* error;
 
 public:
-    GradeTooLowToExecuteFormException( const char* msg ) : error ( msg ) {}
+    ExecuteFormFailException( const char* msg ) : error ( msg ) {}
 
     virtual const char* what() const throw()
     {
@@ -35,8 +35,8 @@ void ShrubberyCreationForm::execute( Bureaucrat const & bureaucrat ) const
 {
     if ( this->getSign() && bureaucrat.getGrade() <= this->getGrtef() )
     {
-        std::ofstream File( this->getName() + "_shrubbery" );
-
+        std::ofstream File( "./" + bureaucrat.getName() + "_shrubbery" );
+    
        File << "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠖⠒⠢⣄⣀⡀⣀⣀⠀⡠⠔⠒⠒⢤⡀⠀⠀⠀⠀⠀     \n";
        File << " ⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⡇⠀⠀⠀⠁⠠⡋⠀⠀⠙⠦⠀⠀⠀⠀⣧⠤⣀⠀⠀⠀     \n"; 
        File << " ⠀⠀⠀⠀⠀⠀⠀⡠⠖⠊⠑⠲⣄⣀⣠⠖⠘⠛⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⢸⠇⠀⠀⠀   \n";  
@@ -57,8 +57,8 @@ void ShrubberyCreationForm::execute( Bureaucrat const & bureaucrat ) const
        File << " ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠁⠉⠙⠒⠤⣘⣗⠒⠒⠒⠚⠛⠃⠀⠀⠀⠀⠀⠀   \n";
 
         File.close();
+        std::cout << bureaucrat.getName() + "_shrubbery created successfully" << std::endl; 
     }
     else
-        throw GradeTooLowToExecuteFormException( "Grade required to execute the form: too low" );
-
+        throw ExecuteFormFailException( "Bureaucrat failed to execute the form" );
 }

@@ -7,6 +7,10 @@
 #include <iostream>
 #include <exception>
 #include <fstream>
+
+class AForm;
+#include "AForm.hpp"
+
 class Bureaucrat
 {
 private:
@@ -28,6 +32,8 @@ public:
     void decrement();
 
     void signedForm( bool , const std::string& ) const;
+
+    void executeForm( AForm const & );
 };
 
 std::ostream& operator<<( std::ostream& out, const Bureaucrat& bureaucrat );

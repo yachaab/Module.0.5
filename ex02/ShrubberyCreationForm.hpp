@@ -6,7 +6,7 @@
 class ShrubberyCreationForm : public AForm
 {
 protected:
-    class GradeTooLowToExecuteFormException;
+    class ExecuteFormFailException;
 
 public:
     ShrubberyCreationForm();
