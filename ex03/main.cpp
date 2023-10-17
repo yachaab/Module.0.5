@@ -1,9 +1,6 @@
-// #include "ShrubberyCreationForm.hpp"
-// #include "RobotomyRequestForm.hpp"
-// #include "PresidentialPardonForm.hpp"
 #include "Intern.hpp"
 
-int main0()
+int main()
 {
     try
     {
@@ -32,11 +29,4 @@ int main0()
     }
 
     return (0);
-}
-
-int main()
-{
-    main0();
-    // system( "leaks a.out" );
-    return ( 0 );
 }

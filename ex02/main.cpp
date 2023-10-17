@@ -2,7 +2,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-int main0()
+int main()
 {
     AForm* csf = new ShrubberyCreationForm( "Shrubbery" );
     AForm* rrf = new RobotomyRequestForm( "Roboto" );
@@ -36,11 +36,4 @@ int main0()
     delete ppf;
 
     return (0);
-}
-
-int main()
-{
-    main0();
-    //system( "leaks a.out" );
-    return ( 0 );
 }

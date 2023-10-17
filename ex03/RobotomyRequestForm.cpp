@@ -1,6 +1,5 @@
-#include <stdlib.h>
-#include <ctime>
 #include "RobotomyRequestForm.hpp"
+
 class RobotomyRequestForm::ExecuteFormFailException : public std::exception
 {
 private:

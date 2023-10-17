@@ -4,7 +4,7 @@ CC      = c++
 
 OBJDIR  = obj
 
-CPPFLAG = -Werror -Wall -Wextra -std=c++98 #-g3 -fsanitize=address
+CPPFLAG = -Werror -Wall -Wextra -std=c++98 -g3 -fsanitize=address
 
 SRC     = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
