@@ -10,16 +10,24 @@ int main()
 
     try
     {
-        Bureaucrat b( "Hamza", 137 );
+        Bureaucrat b( "Hamza", 145 );
 
         csf->beSigned( b );
+         std::cout << std::endl;
+
+        rrf->beSigned( b );
+         std::cout << std::endl;
+
+        ppf->beSigned( b );
+        std::cout << std::endl;
+
         b.executeForm( *csf );
+         std::cout << std::endl;
 
-        // rrf->beSigned( b );
-        // b.executeForm( *rrf );
+        b.executeForm( *rrf );
+         std::cout << std::endl;
 
-        // ppf->beSigned( b );
-        // b.executeForm( *ppf );
+        b.executeForm( *ppf );
 
     }
     catch( const std::exception& e )

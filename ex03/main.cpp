@@ -2,22 +2,36 @@
 
 int main()
 {
+
+    Intern in;
+    AForm* scf = in.makeForm( "shrubbery creation", "SCF" );
+    std::cout << std::endl;
+    AForm* rrf = in.makeForm( "robotomy request", "RRF" );
+    std::cout << std::endl;
+    AForm* ppf = in.makeForm( "presidential pardon", "PPF" );
     try
     {
-		Intern in;
-        AForm* sc = in.makeForm( "robotomy request", "RR Form" );
+		Bureaucrat b( "Hamza", 2 );
+        if ( scf )
+        {
+            std::cout << std::endl;
+            scf->beSigned( b );
+            b.executeForm( *scf );
+        }
 
-		std::cout << "Sign: " << sc->getSign() << std::endl;
+        if ( rrf )
+        {
+            std::cout << std::endl;
+            rrf->beSigned( b );
+            b.executeForm( *rrf );
+        }
 
-
-		Bureaucrat b( "Hamza", 45 );
-
-		sc->beSigned( b );
-
-		b.executeForm( *sc );
-
-		std::cout << "Name: " << sc->getGrtsf() << std::endl;
-
+        if ( ppf )
+        {
+            std::cout << std::endl;
+            ppf->beSigned( b );
+            b.executeForm( *ppf );
+        }
     }
     catch( const std::exception& e )
     {
@@ -27,6 +41,10 @@ int main()
     {
         std::cerr << FRED( "unexpected error\n" );
     }
+
+    delete scf;
+    delete rrf;
+    delete ppf;
 
     return (0);
 }

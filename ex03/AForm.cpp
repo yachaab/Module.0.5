@@ -4,23 +4,21 @@ class AForm::GradeTooHighException : public std::exception
 {
 private:
     const char* error;
-
 public:
-    GradeTooHighException( const char* msg ) : error ( msg ) {}
+    GradeTooHighException() : error ( "Grade Too High" ) {}
 
     virtual const char* what() const throw()
     {
         return ( error );
-    }
+    } 
 };
 
 class AForm::GradeTooLowException : public std::exception
 {
 private:
     const char* error;
-
 public:
-    GradeTooLowException( const char* msg ) : error ( msg ) {}
+    GradeTooLowException() : error ( "Grade Too Low" ) {}
 
     virtual const char* what() const throw()
     {
@@ -41,14 +39,10 @@ AForm::AForm( std::string bName, bool sign, int grtsf, int grtef )
         gradeRequiredToSignTheForm ( grtsf ),
         gradeRequiredToExecuteTheForm( grtef )
 {
-    if ( gradeRequiredToSignTheForm < 1 )
-        throw GradeTooHighException( "Grade required to sign the form out of range: too hight" );
-    else if ( gradeRequiredToSignTheForm > 150 )
-        throw GradeTooHighException( "Grade required to sign the form out of range: too low" );
-    if ( gradeRequiredToExecuteTheForm < 1 )
-        throw GradeTooHighException( "Grade required to execute the form out of range: too hight" );
-     else if ( gradeRequiredToExecuteTheForm > 150 )
-        throw GradeTooHighException( "Grade required to execute the form out of range: too low" );
+    if ( gradeRequiredToSignTheForm < 1 || gradeRequiredToExecuteTheForm < 1 )
+        throw GradeTooHighException();
+    else if ( gradeRequiredToSignTheForm > 150 || gradeRequiredToExecuteTheForm > 150 )
+        throw GradeTooHighException();
 }
 
 AForm::AForm( const AForm& obj )
@@ -88,15 +82,22 @@ const int&          AForm::getGrtef()  const
 
 void AForm::beSigned( const Bureaucrat& bureaucrat )
 {
-    if ( bureaucrat.getGrade() <= gradeRequiredToSignTheForm )
+    try
     {
-        signedForm = true;
-        bureaucrat.signedForm( signedForm, name );
+        if ( bureaucrat.getGrade() <= gradeRequiredToSignTheForm )
+        {
+            signedForm = true;
+            bureaucrat.signedForm( signedForm, name );
+        }
+        else
+        {
+            bureaucrat.signedForm( signedForm, name );
+            throw GradeTooLowException();
+        }
     }
-    else
+    catch( const std::exception& e )
     {
-        bureaucrat.signedForm( signedForm, name );
-        throw GradeTooLowException( "Grade required to sign the form: too low" );
+        std::cerr << e.what() << '\n';
     }
 }
 

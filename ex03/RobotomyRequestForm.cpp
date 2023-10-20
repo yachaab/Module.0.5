@@ -47,7 +47,7 @@ void RobotomyRequestForm::execute( Bureaucrat const & bureaucrat ) const
 			system("ffplay ~/Desktop/sound.wav");
 			#endif
             std::cout <<  bureaucrat.getName() << " has been robotomized ";
-            std::cout << "successfully 50% of the time" << std::endl;
+            std::cout << "successfully" << std::endl;
         }
         else
             std::cout <<  FRED( "robotomy failed" ) << std::endl;

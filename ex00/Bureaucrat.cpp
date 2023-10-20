@@ -5,7 +5,7 @@ class Bureaucrat::GradeTooHighException : public std::exception
 private:
     const char* error;
 public:
-    GradeTooHighException() : error ("error") {}
+    GradeTooHighException() : error ( "Grade Too High" ) {}
 
     virtual const char* what() const throw()
     {

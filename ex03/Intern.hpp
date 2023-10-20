@@ -7,9 +7,6 @@
 
 class Intern
 {
-protected:
-	class InternWrongFormNameException;
-
 public:
 	Intern();
 	Intern( const Intern& );

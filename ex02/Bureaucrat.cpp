@@ -5,7 +5,7 @@ class Bureaucrat::GradeTooHighException : public std::exception
 private:
     const char* error;
 public:
-    GradeTooHighException( const char* msg ) : error ( msg ) {}
+    GradeTooHighException() : error ( "Grade Too High" ) {}
 
     virtual const char* what() const throw()
     {
@@ -18,7 +18,7 @@ class Bureaucrat::GradeTooLowException : public std::exception
 private:
     const char* error;
 public:
-    GradeTooLowException( const char* msg ) : error ( msg ) {}
+    GradeTooLowException() : error ( "Grade Too Low" ) {}
 
     virtual const char* what() const throw()
     {
@@ -32,9 +32,9 @@ Bureaucrat::Bureaucrat( const std::string bName, int bGrade )
     : name ( bName )
 {
     if ( bGrade < 1)
-        throw GradeTooHighException( "grade too high" );
+        throw GradeTooHighException();
     else if ( bGrade > 150 )
-        throw GradeTooLowException(" grade too low ");
+        throw GradeTooLowException();
     else
         grade = bGrade;
 }
@@ -64,7 +64,7 @@ void Bureaucrat::increment()
     if ( grade > 1 )
         grade -= 1;
     else
-        throw GradeTooHighException( "Grade already at the highest value 1" );
+        throw GradeTooHighException();
 }
 
 void Bureaucrat::decrement()
@@ -72,7 +72,7 @@ void Bureaucrat::decrement()
     if ( grade < 150 )
         grade += 1;
     else
-        throw GradeTooLowException( "Grade already at the lowest value 150" );
+        throw GradeTooLowException();
 }
 
 void Bureaucrat::signedForm( bool sign, const std::string& fName ) const

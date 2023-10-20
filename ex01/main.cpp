@@ -4,7 +4,7 @@ int main()
 {
     try
     {
-        Bureaucrat b( "Hamza", 1 );
+        Bureaucrat b( "Hamza", 10 );
 
         Form a ( "Form", false , 10, 25 );
 
